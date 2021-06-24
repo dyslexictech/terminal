@@ -6,6 +6,8 @@
 #include <winrt/TerminalApp.h>
 #include "../../cascadia/inc/cppwinrt_utils.h"
 
+#define CM_NOTIFY_FROM_TRAY (WM_APP + 1)
+
 class IslandWindow :
     public BaseWindow<IslandWindow>
 {
@@ -51,6 +53,8 @@ public:
     WINRT_CALLBACK(MouseScrolled, winrt::delegate<void(til::point, int32_t)>);
     WINRT_CALLBACK(WindowActivated, winrt::delegate<void()>);
     WINRT_CALLBACK(HotkeyPressed, winrt::delegate<void(long)>);
+    WINRT_CALLBACK(NotifyTrayIconPressed, winrt::delegate<void()>);
+    WINRT_CALLBACK(NotifyWindowHidden, winrt::delegate<void()>);
 
 protected:
     void ForceResize()
